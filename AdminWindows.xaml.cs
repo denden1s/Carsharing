@@ -85,19 +85,19 @@ namespace Carsharing
         Models_listBox.Items.Add(i.ToString());
     }
 
-    private void Button_close_MouseEnter(object sender, MouseEventArgs e)
-    {
-      Uri imageUri = new Uri("pack://application:,,,/img/close icon on.png");
-      BitmapImage bitmapImage = new BitmapImage(imageUri);
-      Button_close.Source = bitmapImage;
-    }
+    //private void Button_close_MouseEnter(object sender, MouseEventArgs e)
+    //{
+    //  Uri imageUri = new Uri("pack://application:,,,/img/close icon on.png");
+    //  BitmapImage bitmapImage = new BitmapImage(imageUri);
+    //  Button_close.Source = bitmapImage;
+    //}
 
-    private void Button_close_MouseLeave(object sender, MouseEventArgs e)
-    {
-      Uri imageUri = new Uri("pack://application:,,,/img/close_icon.png");
-      BitmapImage bitmapImage = new BitmapImage(imageUri);
-      Button_close.Source = bitmapImage;
-    }
+    //private void Button_close_MouseLeave(object sender, MouseEventArgs e)
+    //{
+    //  Uri imageUri = new Uri("pack://application:,,,/img/close_icon.png");
+    //  BitmapImage bitmapImage = new BitmapImage(imageUri);
+    //  Button_close.Source = bitmapImage;
+    //}
 
     private void Button_close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Carsharing.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Carsharing.Entities;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace Carsharing
@@ -25,7 +27,7 @@ namespace Carsharing
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-      optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=carsharing;");
+      optionsBuilder.UseSqlServer(@"Server=localhost\SQLEXPRESS;Database=carsharing;Trusted_Connection=True;TrustServerCertificate=true;");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -71,18 +73,12 @@ namespace Carsharing
       modelBuilder.Entity<Rent_details>()
         .HasOne<Rent_deal>(rent_details => rent_details.Rent)
         .WithOne(rent_deal => rent_deal.Details)
-        .HasForeignKey<Rent_details>(rent_details => rent_details.ID);
+        .HasForeignKey<Rent_details>(rent_details => rent_details.ID).OnDelete(DeleteBehavior.Restrict);
 
       modelBuilder.Entity<Rent_deal>()
         .HasOne<Client>(rent_deal => rent_deal.Client)
         .WithMany(client => client.Rent_deals)
         .HasForeignKey(rent_deal => rent_deal.Client_ID);
-
-      
-      modelBuilder.Entity<Rent_deal>()
-        .HasOne<Car>(rent_deal => rent_deal.Car)
-        .WithMany(car => car.Rent_deals)
-        .HasForeignKey(rent_deal => rent_deal.Car_ID);
     }
 
     private bool GenerateUsers(List<Entities.User> Users)
@@ -353,7 +349,8 @@ namespace Carsharing
     }
     public bool GenerateDatabaseContent()
     {
-      Database.EnsureDeleted();
+      if(Database.GetService<IRelationalDatabaseCreator>().Exists())
+        Database.EnsureDeleted();
       Database.EnsureCreated();
       List<User> users = new List<User>();
       // Adding users to DB

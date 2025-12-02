@@ -13,11 +13,9 @@ namespace Carsharing.Entities
     public int Client_ID { get; private set; }
     public string Car_ID { get; private set; }
     public DateTime Date { get; private set; } = DateTime.Now;
-    public string Document { get; private set; }
+    public string? Document { get; private set; }
 
     public Client Client { get; private set; }
-
-    public Car Car { get; private set; }
 
     public Rent_details Details { get; set; }
 
@@ -30,7 +28,7 @@ namespace Carsharing.Entities
       Car_ID = car_ID;
       Date = date;
       Document = document;
-      LoadCar();
+      //LoadCar();
       LoadDetails();
     }
 
@@ -41,12 +39,14 @@ namespace Carsharing.Entities
         return db.Rent_deal.ToList();
       }
     }
-    public void LoadCar()
+    public Car GetCar()
     {
+       Car car = new Car();
       using(ApplicationContext db = new ApplicationContext())
       {
-        Car = db.Car.Where(i => Car_ID == i.ID).FirstOrDefault();
+        car = db.Car.Where(i => Car_ID == i.ID).FirstOrDefault();
       }
+      return car;
     }
 
     public void LoadDetails()
@@ -60,7 +60,6 @@ namespace Carsharing.Entities
     {
       using(ApplicationContext db = new ApplicationContext())
       {
-        this.Car = null;
         db.Rent_deal.Add(this);
         db.SaveChanges();
       }

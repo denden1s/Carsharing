@@ -10,7 +10,6 @@
         Height="800         " Width="1000         "
         FontFamily="Cascadia Code"
         FontSize="16" 
-        Icon="./img/3d-car.png"
         VerticalContentAlignment="Center"
         VerticalAlignment="Center"
         WindowStartupLocation="CenterScreen"
@@ -45,9 +44,7 @@
     <Grid Panel.ZIndex="0">
       <Border x:Name="drag_and_drop" Background="Transparent" Margin="0,-1,0,777" Panel.ZIndex="3" CornerRadius="15,15,0,0" MouseDown="drag_and_drop_MouseDown" Width="1000" Height="24"/>
       <Border x:Name="Panel" CornerRadius="15,15,0,0" Background="LightGray" Margin="0,0,0,776" Panel.ZIndex="1" Width="1000" Height="24"/>
-      <Image Source="./img/3d-car.png" Height="24" Width="24"  Panel.ZIndex="2" Margin="10,-1,966,777"/>
-      <Image x:Name="Button_close" Source="./img/close_icon.png" Height="24" Width="24"  Panel.ZIndex="3" Margin="975,0,1,776" MouseLeftButtonDown="Button_close_MouseLeftButtonDown" MouseEnter="Button_close_MouseEnter" MouseLeave="Button_close_MouseLeave" />
-      <Label FontSize="14" Panel.ZIndex="2" Height="24" Margin="0,-1,0,777" Content="Analytic form" HorizontalAlignment="Center"/>
+            <Label FontSize="14" Panel.ZIndex="2" Height="24" Margin="0,-1,0,777" Content="Analytic form" HorizontalAlignment="Center"/>
       <TabControl Margin="0,29,0,0" Background="Transparent" BorderBrush="Transparent">
         <TabItem Header="Price list">
           <Grid Background="#e0c060" Height="727">

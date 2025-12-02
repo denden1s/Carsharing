@@ -11,7 +11,7 @@ namespace Carsharing.Entities
     public string Name { get; protected set; }
     public int Number { get; protected set; }
     
-    public string Passport { get; set; }
+    public string? Passport { get; set; }
     public int Role { get; protected set; }
 
    

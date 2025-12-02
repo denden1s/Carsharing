@@ -9,7 +9,6 @@
         Height="185" Width="338"
         FontFamily="Cascadia Code"
         FontSize="16" 
-        Icon="./img/3d-car.png"
         VerticalContentAlignment="Center"
         VerticalAlignment="Center"
         WindowStartupLocation="CenterScreen"
@@ -46,8 +45,6 @@
       <Border x:Name="Panel" CornerRadius="15,15,0,0" Background="LightGray" Margin="0,0,0,161" Panel.ZIndex="1">
         
       </Border>
-      <Image Source="./img/3d-car.png" Height="24" Width="24"  Panel.ZIndex="2" Margin="4,0,303,161"/>
-      <Image x:Name="Button_close" Source="./img/close_icon.png" Height="24" Width="24"  Panel.ZIndex="3" Margin="314,0,0,161" MouseLeftButtonDown="Button_close_MouseLeftButtonDown" MouseEnter="Button_close_MouseEnter" MouseLeave="Button_close_MouseLeave" />
       <Label FontSize="14" Panel.ZIndex="2" Height="24" Margin="24,0,19,165" Content="Authorized form" HorizontalAlignment="Center"/>
       <TextBox x:Name="TextBox_login" HorizontalAlignment="Center" Margin="0,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" HorizontalContentAlignment="Center" TextAlignment="Center" VerticalContentAlignment="Center" Height="30">
         <TextBox.Template>

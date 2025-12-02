@@ -19,7 +19,9 @@ namespace Carsharing
     private AdminWindows adminWindow;
     public MainWindow()
     {
-      using(ApplicationContext db = new ApplicationContext())
+        ApplicationContext ddd = new ApplicationContext();
+        ddd.GenerateDatabaseContent();
+            using (ApplicationContext db = new ApplicationContext())
       {
         users = db.User.ToList();
       } 
@@ -55,19 +57,19 @@ namespace Carsharing
 
     private void Button_close_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => Application.Current.Shutdown();
 
-    private void Button_close_MouseEnter(object sender, MouseEventArgs e)
-    {
-      Uri imageUri = new Uri("pack://application:,,,/img/close icon on.png");
-      BitmapImage bitmapImage = new BitmapImage(imageUri);
-      Button_close.Source = bitmapImage;
-    }
+    //private void Button_close_MouseEnter(object sender, MouseEventArgs e)
+    //{
+    //  Uri imageUri = new Uri("pack://application:,,,/img/close icon on.png");
+    //  BitmapImage bitmapImage = new BitmapImage(imageUri);
+    //  Button_close.Source = bitmapImage;
+    //}
 
-    private void Button_close_MouseLeave(object sender, MouseEventArgs e)
-    {
-      Uri imageUri = new Uri("pack://application:,,,/img/close_icon.png");
-      BitmapImage bitmapImage = new BitmapImage(imageUri);
-      Button_close.Source = bitmapImage;
-    }
+    //private void Button_close_MouseLeave(object sender, MouseEventArgs e)
+    //{
+    //  Uri imageUri = new Uri("pack://application:,,,/img/close_icon.png");
+    //  BitmapImage bitmapImage = new BitmapImage(imageUri);
+    //  Button_close.Source = bitmapImage;
+    //}
 
     private void Button_login_MouseEnter(object sender, MouseEventArgs e) => Button_login.Background = new SolidColorBrush(Color.FromRgb(53, 230, 81));
 

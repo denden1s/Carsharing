@@ -24,7 +24,8 @@ namespace Carsharing.Entities
     {
       Login = login;
       Password = encryption.EncryptPassword(password, login);
-    }
+      this.Role = Role;
+        }
 
     List<User> ILoadEntity<User>.LoadData()
     {

@@ -50,22 +50,22 @@ namespace Carsharing
       deals = _deals.LoadData();
       foreach(var i in deals)
       {
-        i.LoadCar();
-        model_id.Add(i.Car.Model_ID);
+        Car car = i.GetCar();
+        model_id.Add(car.Model_ID);
       }
       // Load data about car popularity in format: model - count
-      var dict = model_id.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count()).OrderByDescending(x => x.Value).ToString();
+      var dict = model_id.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count()).OrderByDescending(x => x.Value);
       DataTable dataTable_pop = new DataTable();
       dataTable_pop.Columns.Add("Model");
       dataTable_pop.Columns.Add("Count");
-      //foreach(var i in dict)
-      //{
-      //  DataRow dataRow1 = dataTable_pop.NewRow();
-      //  dataRow1["Model"] = models.Where(q => q.ID == i.Key).SingleOrDefault().ToString();
-      //  dataRow1["Count"] = i.Value.ToString();
-      //  dataTable_pop.Rows.Add(dataRow1);
-      //}
-      //data_grid_popular.ItemsSource = dataTable_pop.DefaultView;
+      foreach(var i in dict)
+      {
+        DataRow dataRow1 = dataTable_pop.NewRow();
+        dataRow1["Model"] = models.Where(q => q.ID == i.Key).SingleOrDefault().ToString();
+        dataRow1["Count"] = i.Value.ToString();
+        dataTable_pop.Rows.Add(dataRow1);
+      }
+      data_grid_popular.ItemsSource = dataTable_pop.DefaultView;
 
       foreach(Car_model m in models)
         m.SetPrice();
@@ -111,19 +111,19 @@ namespace Carsharing
       Application.Current.Shutdown();      
     }
 
-    private void Button_close_MouseEnter(object sender, MouseEventArgs e)
-    {
-      Uri imageUri = new Uri("pack://application:,,,/img/close icon on.png");
-      BitmapImage bitmapImage = new BitmapImage(imageUri);
-      Button_close.Source = bitmapImage;
-    }
+    //private void Button_close_MouseEnter(object sender, MouseEventArgs e)
+    //{
+    //  Uri imageUri = new Uri("pack://application:,,,/img/close icon on.png");
+    //  BitmapImage bitmapImage = new BitmapImage(imageUri);
+    //  Button_close.Source = bitmapImage;
+    //}
 
-    private void Button_close_MouseLeave(object sender, MouseEventArgs e)
-    {
-      Uri imageUri = new Uri("pack://application:,,,/img/close_icon.png");
-      BitmapImage bitmapImage = new BitmapImage(imageUri);
-      Button_close.Source = bitmapImage;
-    }
+    //private void Button_close_MouseLeave(object sender, MouseEventArgs e)
+    //{
+    //  Uri imageUri = new Uri("pack://application:,,,/img/close_icon.png");
+    //  BitmapImage bitmapImage = new BitmapImage(imageUri);
+    //  Button_close.Source = bitmapImage;
+    //}
     private void drag_and_drop_MouseDown(object sender, MouseButtonEventArgs e) => this.DragMove();
 
     private void Button_enterPrice_MouseEnter(object sender, MouseEventArgs e) => Button_enterPrice.Background = new SolidColorBrush(Color.FromRgb(53, 230, 81));
