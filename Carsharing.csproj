@@ -18,4 +18,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <!-- Include any files in the img folder as WPF resources so pack://application URIs work -->
+  <ItemGroup>
+    <Resource Include="img\**\*.*" />
+  </ItemGroup>
+
 </Project>

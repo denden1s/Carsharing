@@ -111,19 +111,19 @@ namespace Carsharing
       Application.Current.Shutdown();      
     }
 
-    //private void Button_close_MouseEnter(object sender, MouseEventArgs e)
-    //{
-    //  Uri imageUri = new Uri("pack://application:,,,/img/close icon on.png");
-    //  BitmapImage bitmapImage = new BitmapImage(imageUri);
-    //  Button_close.Source = bitmapImage;
-    //}
+    private void Button_close_MouseEnter(object sender, MouseEventArgs e)
+    {
+      Uri imageUri = new Uri("pack://application:,,,/img/close_icon.png");
+      BitmapImage bitmapImage = new BitmapImage(imageUri);
+      Button_close.Source = bitmapImage;
+    }
 
-    //private void Button_close_MouseLeave(object sender, MouseEventArgs e)
-    //{
-    //  Uri imageUri = new Uri("pack://application:,,,/img/close_icon.png");
-    //  BitmapImage bitmapImage = new BitmapImage(imageUri);
-    //  Button_close.Source = bitmapImage;
-    //}
+    private void Button_close_MouseLeave(object sender, MouseEventArgs e)
+    {
+      Uri imageUri = new Uri("pack://application:,,,/img/close_icon.png");
+      BitmapImage bitmapImage = new BitmapImage(imageUri);
+      Button_close.Source = bitmapImage;
+    }
     private void drag_and_drop_MouseDown(object sender, MouseButtonEventArgs e) => this.DragMove();
 
     private void Button_enterPrice_MouseEnter(object sender, MouseEventArgs e) => Button_enterPrice.Background = new SolidColorBrush(Color.FromRgb(53, 230, 81));
