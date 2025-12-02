@@ -19,9 +19,10 @@ namespace Carsharing
     private AdminWindows adminWindow;
     public MainWindow()
     {
-        ApplicationContext ddd = new ApplicationContext();
-        ddd.GenerateDatabaseContent();
-            using (ApplicationContext db = new ApplicationContext())
+      // TODO: need use only if database not exist
+      ApplicationContext dbCtx = new ApplicationContext();
+      dbCtx.GenerateDatabaseContent();
+      using (ApplicationContext db = new ApplicationContext())
       {
         users = db.User.ToList();
       } 
